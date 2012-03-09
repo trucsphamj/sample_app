@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
+gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -29,6 +30,9 @@ end
 group :test do
   gem 'rspec', '2.0.1'
   gem 'webrat', '0.7.1'
+  gem 'autotest', '4.4.4'
+  gem 'redgreen', '1.2.2'
+  gem 'test-unit', '2.1.1'
 end
 
 
