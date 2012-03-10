@@ -1,0 +1,11 @@
+<header>
+  <% logo = image_tag("logo.png", :alt => "Sample App", :class => "round") %>
+  <%= link_to logo, home_path %>
+  <nav clas="round">
+    <ul>
+      <li><%= link_to "Home", home_path %></li>
+      <li><%= link_to "Help", help_path %></li>
+      <li><%= link_to "Sign in", '#' %></li>
+    </ul>
+  </nav>
+</header>
