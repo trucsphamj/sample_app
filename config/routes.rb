@@ -1,10 +1,17 @@
 SampleApp::Application.routes.draw do
-  
+ 
   get "pages/home"
 
   get "pages/contact"
 
   get "pages/about"
+ 
+  match '/', :to => 'pages#home'
+  match '/home', :to => 'pages#home'
+  match '/contact', :to => 'pages#contact'
+  match '/about', :to => 'pages#about'
+  match '/help', :to => 'pages#help'
+  
 
 
   # The priority is based upon order of creation:
@@ -12,6 +19,8 @@ SampleApp::Application.routes.draw do
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
+  #   match '/', :to => 'pages#home'
+      
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
@@ -56,7 +65,7 @@ SampleApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'pages#home'
 
   # See how all your routes lay out with "rake routes"
 
