@@ -24,15 +24,17 @@ end
 gem 'jquery-rails'
 
 group :development do
-  gem 'rspec-rails', '2.0.1'
+  gem 'rspec-rails','2.6.0'
+  gem 'annotate', '2.4.0'
 end
 
 group :test do
-  gem 'rspec', '2.0.1'
+  gem 'rspec', '2.6.0'
   gem 'webrat', '0.7.1'
   gem 'autotest', '4.4.4'
-  gem 'redgreen', '1.2.2'
-  gem 'test-unit', '2.1.1'
+  gem 'spork', '0.9.0.rc8'
+  #gem 'redgreen', '1.2.2'
+  #gem 'test-unit', '2.1.1'
 end
 
 
