@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
 gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
+gem 'gravatar_image_tag', '1.0.0.pre2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -35,6 +36,7 @@ group :test do
   gem 'spork', '0.9.0.rc8'
   #gem 'redgreen', '1.2.2'
   #gem 'test-unit', '2.1.1'
+  gem 'factory_girl_rails', '1.0'
 end
 
 
