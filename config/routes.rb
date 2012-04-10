@@ -1,5 +1,9 @@
 SampleApp::Application.routes.draw do
+  get "sessions/new"
+
   resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :nags, :only => [:create, :destroy]
  
   get "pages/home"
 
@@ -19,6 +23,8 @@ SampleApp::Application.routes.draw do
   match '/', :to => 'pages#home'
   match '/signup', :to => 'users#new'
   match '/new', :to => 'users#new'
+  match '/signin',  :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
 
 
   # The priority is based upon order of creation:

@@ -177,3 +177,9 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+.check {
+  margin-left: 20%;
+  font: .9em arial small;
+  color: red;
+}
