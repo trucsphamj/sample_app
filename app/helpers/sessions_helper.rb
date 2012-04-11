@@ -27,7 +27,7 @@ module SessionsHelper
   end
 
   def lastLogin
-    return time_ago_in_words(cookies[:lastSession])  # display last log-in time in words
+    return time_ago_in_words(cookies[:lastSession])  # display how long ago last log-in time is
   end
 
   def authenticate
