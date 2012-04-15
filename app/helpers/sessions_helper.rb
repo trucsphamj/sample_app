@@ -26,6 +26,13 @@ module SessionsHelper
     self.current_user = nil
   end
 
+<<<<<<< HEAD
+=======
+  def lastLogin
+    return time_ago_in_words(cookies[:lastSession])  # display how long ago last log-in time is
+  end
+
+>>>>>>> login-additions
   def authenticate
     deny_access unless signed_in?
   end
