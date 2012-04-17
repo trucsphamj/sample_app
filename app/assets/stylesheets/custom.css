@@ -183,3 +183,11 @@ div.field, div.actions {
   font: .9em arial small;
   color: red;
 }
+
+ul.users {
+  margin-top: 1em;
+}
+
+.users li {
+  list-style: none;
+}
