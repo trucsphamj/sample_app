@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,   :only => :destroy
+before_filter :authenticate, :only => [:index, :edit, :update]
+before_filter :correct_user, :only => [:edit, :update]
+before_filter :admin_user,   :only => :destroy
 
   def index
     @title = "All users"
-    @users = User.paginate(:page => params[:page])
+     @users = User.paginate(:page => params[:page])
   end
 
   def show
@@ -14,8 +14,8 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new      
-    @title = "Sign up"      
+    @user = User.new  
+    @title = "Sign up"   
   end
 
   def create
@@ -58,12 +58,12 @@ class UsersController < ApplicationController
       deny_access unless signed_in?
     end
 
-   def correct_user
+    def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
 
-   def admin_user
+    def admin_user
       redirect_to(root_path) unless current_user.admin?
-   end
+    end
 end    

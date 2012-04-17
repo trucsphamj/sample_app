@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       #cookies.permanent[:lastSession] = user.updated_at   #(save last log-in time before updating it)  
       #user.touch   #(update log-in time for this session)  
       sign_in user
-      redirect_to user
+      redirect_back_or user
     end
   end
 
