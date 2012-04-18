@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-before_filter :authenticate, :only => [:index, :edit, :update]
+before_filter :authenticate, :only => [:show, :index, :edit, :update]
 before_filter :correct_user, :only => [:edit, :update]
 before_filter :admin_user,   :only => :destroy
 
   def index
     @title = "All users"
-     @users = User.paginate(:page => params[:page])
+     @users = User.paginate(:per_page => 5, :page => params[:page])
   end
 
   def show

@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
       render 'new'
     else
       # the next 2 statements are here to  implement part 2 of assignment #9
-      #cookies.permanent[:lastSession] = user.updated_at   #(save last log-in time before updating it)  
-      #user.touch   #(update log-in time for this session)  
+      cookies.permanent[:lastSession] = user.updated_at   #(save last log-in time before updating it)  
+      user.touch   #(update log-in time for this session)  
       sign_in user
       redirect_back_or user
     end
