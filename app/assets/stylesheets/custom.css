@@ -178,6 +178,11 @@ div.field, div.actions {
   list-style: square;
 }
 
+#checkbox{
+  font: .9em arial small;
+  color: red;
+}
+
 .check {
   margin-left: 20%;
   font: .9em arial small;

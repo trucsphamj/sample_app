@@ -35,13 +35,7 @@ describe UsersController do
         response.should have_selector('title', :content => "All users")
       end
       
-      it "should have an element for each user" do
-        get :index
-        User.paginate(:page => 2).each do |user|
-          response.should have_selector('li', :content => user.name)
-        end
-      end
-      
+             
       it "should paginate users" do
         get :index
         response.should have_selector('div.pagination')
@@ -72,8 +66,12 @@ describe UsersController do
   describe "GET 'show'" do
     
     before(:each) do
-      @user = Factory(:user)
+        @user = Factory(:user)
+        @second = Factory(:user, :name => "Bob", :email => "another@example.com")
+        @third  = Factory(:user, :name => "Ben", :email => "another@example.net")
+        @fourth = Factory(:user, :name => "Randy", :email => "another@example.org")      
     end
+    
   
     it "should be successful" do
       get :show, :id => @user
@@ -112,6 +110,36 @@ describe UsersController do
         test_sign_in(Factory(:user, :email => Factory.next(:email)))
         get :show, :id => @user
         response.should be_success
+      end
+    end
+
+    describe "when signed in" do
+      before(:each) do
+        test_sign_in(@user)
+      end
+        
+      it "should see all users profile" do
+         get :show, :id => @user
+        response.should be_success 
+        get :show, :id => @second
+        response.should be_success   
+        get :show, :id => @third
+        response.should be_success  
+        get :show, :id => @fourth
+        response.should be_success       
+      end
+    end
+
+    describe "when not-signed in" do
+      it "should not see all users profile" do
+         get :show, :id => @user
+        response.should_not be_success 
+        get :show, :id => @second
+        response.should_not be_success   
+        get :show, :id => @third
+        response.should_not be_success  
+        get :show, :id => @fourth
+        response.should_not be_success       
       end
     end
   end
@@ -207,6 +235,13 @@ describe UsersController do
       response.should have_selector('a', :href => 'http://gravatar.com/emails',
                                          :content => "change")
     end
+
+    it "should have a check box for marking profile public" do
+      get :edit, :id => @user
+      response.should have_selector('span',  :id => "checkbox")
+      response.should have_selector('input', :name => "user[public]")
+    end
+
   end
 
   describe "PUT 'update'" do
@@ -330,6 +365,6 @@ describe UsersController do
       end   
     end
   end
- end
+end
 
 
