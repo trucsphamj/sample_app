@@ -67,9 +67,9 @@ describe UsersController do
     
     before(:each) do
         @user = Factory(:user)
-        @second = Factory(:user, :name => "Bob", :email => "another@example.com")
-        @third  = Factory(:user, :name => "Ben", :email => "another@example.net")
-        @fourth = Factory(:user, :name => "Randy", :email => "another@example.org")      
+        @second = Factory(:user, :name => "Bob", :email => "another@example.com", :public => true)
+        @third  = Factory(:user, :name => "Ben", :email => "another@example.net", :public => true)
+        @fourth = Factory(:user, :name => "Randy", :email => "another@example.org", :public => false)      
     end
     
   
@@ -132,15 +132,18 @@ describe UsersController do
 
     describe "when not-signed in" do
       it "should not see all users profile" do
-         get :show, :id => @user
-        response.should_not be_success 
-        get :show, :id => @second
-        response.should_not be_success   
-        get :show, :id => @third
-        response.should_not be_success  
         get :show, :id => @fourth
         response.should_not be_success       
       end
+
+      it "should see only users who marked their profile public" do
+        get :show, :id => @user
+        response.should be_success 
+        get :show, :id => @second
+        response.should be_success   
+        get :show, :id => @third
+        response.should be_success  
+      end  
     end
   end
 

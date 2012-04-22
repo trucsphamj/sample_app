@@ -8,9 +8,12 @@ before_filter :admin_user,   :only => :destroy
      @users = User.paginate(:per_page => 5, :page => params[:page])
   end
 
-  def show
+  def show    
     @user = User.find(params[:id])
     @title = @user.name
+    if @user.public == false 
+      authenticate
+    end 
   end
 
   def new
@@ -55,7 +58,7 @@ before_filter :admin_user,   :only => :destroy
   private
 
     def authenticate
-      deny_access unless signed_in?
+      deny_access unless signed_in? 
     end
 
     def correct_user
